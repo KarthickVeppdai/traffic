@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+</head>
+<body>
+<div  id="dashboard">
+
+</div>
+
+<div hx-get="/dashboard"  hx-trigger="every 3s">
+
+    <h1>Dashboard</h1>
+    <h1>Road Wise Traffic Details</h1>
+    <div id="param1">
+        <span>Civil Line Road-------: </span><span th:text="${road1}">0</span>
+    </div>
+    <div id="road2">
+        <span>Fort Kochi Road------: </span><span th:text="${road2}">0</span>
+    </div>
+
+    <div id="road3">
+        <span>Sea Port-Airport Road-----: </span><span th:text="${road3}">0</span>
+    </div>
+
+
+    <h1>Vechical Wise Traffic Details</h1>
+    <div id="vehical1">
+        <span>Car----: </span><span th:text="${v1}">0</span>
+    </div>
+    <div id="vehical2">
+        <span>Bike-----: </span><span th:text="${v2}">0</span>
+    </div>
+
+
+    <!-- HTMX will fetch new values every 3 seconds and swap the content here -->
+</div>
+
+
+</body>
+</html>
