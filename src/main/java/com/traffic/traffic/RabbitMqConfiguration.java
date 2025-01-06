@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@EnableRabbit
 public class RabbitMqConfiguration {
 
 
@@ -24,14 +23,16 @@ public class RabbitMqConfiguration {
         return new DirectExchange(GPS_DATA_EXCHANGE);
     }
 
+
+
     @Bean
-    public Queue gpsQueue() {
-        return new Queue(GPS_QUEUE);
+    public Queue queue() {
+        return new Queue(GPS_QUEUE, true); // true for durable queue
     }
 
     @Bean
     public Binding gpsBinding() {
-        return BindingBuilder.bind(gpsQueue()).to(gpsDirectExchange()).with(ROUTING_KEY_GPS);
+        return BindingBuilder.bind(queue()).to(gpsDirectExchange()).with(ROUTING_KEY_GPS);
     }
 
 }
