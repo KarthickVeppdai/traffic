@@ -1,4 +1,7 @@
-FROM openjdk:17-jdk-slim
-COPY target/traffic-0.0.1-SNAPSHOT.jar traffic-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java", "-jar", "traffic-0.0.1-SNAPSHOT.jar"]
-EXPOSE 8092
+FROM eclipse-temurin:17-jdk-jammy
+WORKDIR /app
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:resolve
+COPY src ./src
+CMD ["./mvnw", "spring-boot:run"]

@@ -2,14 +2,14 @@ package com.traffic.traffic;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
-
-
-@Controller
+@RestController
 public class MainController {
 
 
@@ -19,9 +19,9 @@ public class MainController {
 
 
     @GetMapping("/send")
-    public String sendMessage() {
+    public ResponseEntity<String> sendMessage() {
         messageSender.sendMessage("GPS and Sensors data getting");
-        return "Message Sent!";
+        return ResponseEntity.ok("Response sent!");
     }
 
 }

@@ -23,8 +23,6 @@ public class RabbitMqConfiguration {
        return new DirectExchange(GPS_DATA_EXCHANGE);
    }
 
-
-
     @Bean
     public Queue queue() {
         return new Queue(GPS_QUEUE); // true for durable queue
